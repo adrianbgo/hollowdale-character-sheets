@@ -210,12 +210,64 @@ const Character: React.FC = () => {
             url: `${formUrl}?charname=${encodeURIComponent(questions[password].name)}&name=${encodeURIComponent(name)}&q1=${encodeURIComponent(questions[password].questions[0])}&a1=${encodeURIComponent(answers[0]!)}&q2=${encodeURIComponent(questions[password].questions[1])}&a2=${encodeURIComponent(answers[1]!)}&q3=${encodeURIComponent(questions[password].questions[2])}&a3=${encodeURIComponent(answers[2]!)}&q4=${encodeURIComponent(questions[password].questions[3])}&a4=${encodeURIComponent(answers[3]!)}&q5=${encodeURIComponent(questions[password].questions[4])}&a5=${encodeURIComponent(answers[4]!)}&q6=${encodeURIComponent(questions[password].questions[5])}&a6=${encodeURIComponent(answers[5]!)}&q7=${encodeURIComponent(questions[password].questions[6])}&a7=${encodeURIComponent(answers[6]!)}&q8=${encodeURIComponent(questions[password].questions[7])}&a8=${encodeURIComponent(answers[7]!)}&q9=${encodeURIComponent(questions[password].questions[8])}&a9=${encodeURIComponent(answers[8]!)}&q10=${encodeURIComponent(questions[password].questions[9])}&a10=${encodeURIComponent(answers[9]!)}&q11=${encodeURIComponent(questions[password].questions[10])}&a11=${encodeURIComponent(answers[10]!)}&q12=${encodeURIComponent(questions[password].questions[11])}&a12=${encodeURIComponent(answers[11]!)}&q13=${encodeURIComponent(questions[password].questions[12])}&a13=${encodeURIComponent(answers[12]!)}&q14=${encodeURIComponent(questions[password].questions[13])}&a14=${encodeURIComponent(answers[13]!)}&q15=${encodeURIComponent(questions[password].questions[14])}&a15=${encodeURIComponent(answers[14]!)}&q16=${encodeURIComponent(questions[password].questions[15])}&a16=${encodeURIComponent(answers[15]!)}`
         })
 
+        localStorage.setItem("charname", questions[password].name);
+        localStorage.setItem("name", name);
+        localStorage.setItem("q1", questions[password].questions[0]);
+        localStorage.setItem("a1", answers[0]!);
+        localStorage.setItem("q2", questions[password].questions[1]);
+        localStorage.setItem("a2", answers[1]!);
+        localStorage.setItem("q3", questions[password].questions[2]);
+        localStorage.setItem("a3", answers[2]!);
+        localStorage.setItem("q4", questions[password].questions[3]);
+        localStorage.setItem("a4", answers[3]!);
+        localStorage.setItem("q5", questions[password].questions[4]);
+        localStorage.setItem("a5", answers[4]!);
+        localStorage.setItem("q6", questions[password].questions[5]);
+        localStorage.setItem("a6", answers[5]!);
+        localStorage.setItem("q7", questions[password].questions[6]);
+        localStorage.setItem("a7", answers[6]!);
+        localStorage.setItem("q8", questions[password].questions[7]);
+        localStorage.setItem("a8", answers[7]!);
+        localStorage.setItem("q9", questions[password].questions[8]);
+        localStorage.setItem("a9", answers[8]!);
+        localStorage.setItem("q10", questions[password].questions[9]);
+        localStorage.setItem("a10", answers[9]!);
+        localStorage.setItem("q11", questions[password].questions[10]);
+        localStorage.setItem("a11", answers[10]!);
+        localStorage.setItem("q12", questions[password].questions[11]);
+        localStorage.setItem("a12", answers[11]!);
+        localStorage.setItem("q13", questions[password].questions[12]);
+        localStorage.setItem("a13", answers[12]!);
+        localStorage.setItem("q14", questions[password].questions[13]);
+        localStorage.setItem("a14", answers[13]!);
+        localStorage.setItem("q15", questions[password].questions[14]);
+        localStorage.setItem("a15", answers[14]!);
+        localStorage.setItem("q16", questions[password].questions[15]);
+        localStorage.setItem("a16", answers[15]!);
+        if (questions[password].fullRitual) {
+            localStorage.setItem("fullRitual", questions[password].fullRitual!);
+        }
+        if (questions[password].partialRitual) {
+            localStorage.setItem("partialRitual", questions[password].partialRitual!);
+        }
+        if (questions[password].colors) {
+            localStorage.setItem("colors", questions[password].colors!);
+        }
+
         setSubmitted(true);
     }
     return (
         <>
             {
-                submitted ? <CharacterSheet questions={questions[password].questions} answers={answers} colors={questions[password].colors} fullRitual={questions[password].fullRitual} partialRitual={questions[password].partialRitual} /> :
+                submitted || localStorage.getItem("q1") ?
+                    <CharacterSheet
+                        questions={[localStorage.getItem("q1")!, localStorage.getItem("q2")!, localStorage.getItem("q3")!, localStorage.getItem("q4")!, localStorage.getItem("q5")!, localStorage.getItem("q6")!, localStorage.getItem("q7")!, localStorage.getItem("q8")!, localStorage.getItem("q9")!, localStorage.getItem("q10")!, localStorage.getItem("q11")!, localStorage.getItem("q12")!, localStorage.getItem("q13")!, localStorage.getItem("q14")!, localStorage.getItem("q15")!, localStorage.getItem("q16")!]}
+                        answers={[localStorage.getItem("a1")!, localStorage.getItem("a2")!, localStorage.getItem("a3")!, localStorage.getItem("a4")!, localStorage.getItem("a5")!, localStorage.getItem("a6")!, localStorage.getItem("a7")!, localStorage.getItem("a8")!, localStorage.getItem("a9")!, localStorage.getItem("a10")!, localStorage.getItem("a11")!, localStorage.getItem("a12")!, localStorage.getItem("a13")!, localStorage.getItem("a14")!, localStorage.getItem("a15")!, localStorage.getItem("a16")!]}
+                        fullRitual={localStorage.getItem("fullRitual") || undefined}
+                        partialRitual={localStorage.getItem("partialRitual") || undefined}
+                        colors={localStorage.getItem("colors") || undefined}
+                    />
+                    :
                     <form onSubmit={onSubmit} className='character-form'
                     >
                         <div className='row'>
