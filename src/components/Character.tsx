@@ -281,7 +281,7 @@ const Character: React.FC = () => {
                             <label>
                                 Password
                             </label>
-                            <input type='password' name='password' onChange={(e) => setPassword(e.target.value)} />
+                            <input type='text' name='password' onChange={(e) => setPassword(e.target.value)} />
                         </div>
                         {
                             questions[password] !== undefined && questions[password].questions.map((question, index) => {
