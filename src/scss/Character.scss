@@ -1,0 +1,51 @@
+@import './Globals.scss';
+
+// Styling the form
+form {
+    background-color: #fff;
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 30px 20px;
+    box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+// Styling the row class
+.row {
+    text-align: left;
+    margin-bottom: 25px;
+}
+
+.row label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.row input {
+    border: 1px solid #777;
+    border-radius: 2px;
+    font-family: inherit;
+    padding: 10px;
+    display: block;
+    width: 95%;
+}
+
+button {
+    background-color: #05c46b;
+    color: black;
+    border: 1px solid #777;
+    border-radius: 2px;
+    font-family: inherit;
+    font-size: 21px;
+    display: block;
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+button:disabled {
+    background-color: rgba(239, 239, 239, 0.3);
+    color: rgba(16, 16, 16, 0.3);
+    border-color: rgba(118, 118, 118, 0.3);
+    cursor: not-allowed;
+}
