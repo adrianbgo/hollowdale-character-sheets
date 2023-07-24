@@ -6,8 +6,8 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <Routes>
-        <Route path="/hollowdale-character-sheets" element={<Character />} />
-        <Route path="/hollowdale-character-sheets/:id" element={<Character />} />
+        <Route path="/" element={<Character />} />
+        <Route path="/:id" element={<Character />} />
       </Routes>
     </div>
   )
