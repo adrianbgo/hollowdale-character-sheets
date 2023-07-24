@@ -3,6 +3,7 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import CharacterSheet from './CharacterSheet';
 import '../scss/Character.scss'
+import { useParams } from 'react-router-dom';
 
 type IQuestions = {
     [name: string]: {
@@ -16,11 +17,11 @@ type IQuestions = {
 }
 const formUrl = 'https://script.google.com/macros/s/AKfycbxZACAbJRoviHBrWxBnlwpG3H00z_wMxlnX1DWvNYOOAv8A4tsiqZKR0XrVFWASIY99/exec'
 
-
 const Character: React.FC = () => {
+    const routeParams = useParams();
     const [answers, setAnswers] = useState<Array<string>>(["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]);
     const [name, setName] = useState<string>('');
-    const [password, setPassword] = React.useState<string>('')
+    const [password, setPassword] = React.useState<string>(routeParams.id || '')
     const [submitted, setSubmitted] = React.useState<boolean>(false)
     const [complete, setComplete] = React.useState<boolean>(false)
 
@@ -281,7 +282,7 @@ const Character: React.FC = () => {
                             <label>
                                 Password
                             </label>
-                            <input type='text' name='password' onChange={(e) => setPassword(e.target.value)} />
+                            <input type='text' name='password' onChange={(e) => setPassword(e.target.value)} value={password !== "" ? password : ""} />
                         </div>
                         {
                             questions[password] !== undefined && questions[password].questions.map((question, index) => {
