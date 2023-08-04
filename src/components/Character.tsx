@@ -59,7 +59,6 @@ const Character: React.FC = () => {
   const [password, setPassword] = React.useState<string>(routeParams.id || "");
   const [submitted, setSubmitted] = React.useState<boolean>(false);
   const [complete, setComplete] = React.useState<boolean>(false);
-  const [isOpen, setIsOpen] = React.useState<boolean>(false);
 
   const questions: IQuestions = {
     AFTYpelIQUeT: {
@@ -232,7 +231,7 @@ const Character: React.FC = () => {
   };
   const SubmitButton = () => {
     return (
-      <button onClick={() => setIsOpen(!isOpen)} disabled={!complete}>
+      <button type="submit" disabled={!complete}>
         Submit
       </button>
     );
